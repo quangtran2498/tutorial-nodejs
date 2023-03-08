@@ -1,19 +1,15 @@
-const fs = require("fs");
 
-console.log("First");
-// const fileContents = fs.readFileSync("./file.txt", "utf8");
-// console.log(fileContents);
+const http = require("node:http");
 
-console.log("Second");
-fs.readFile("./file.txt", "utf-8", (err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(data);
-  }
+const people = {
+    name:"quang",
+    age:"25"
+}
+const server = http.createServer((req, res) => {
+  res.writeHead(200,{'Content-Type': 'quang test'});
+  res.end(JSON.stringify(people));
 });
 
-console.log("Third");
-
-
-fs.writeFileSync("./file","quang test write text to file")
+server.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
